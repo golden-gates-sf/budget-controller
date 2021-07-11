@@ -5,13 +5,44 @@
 }
 
 html {
-  background-color: rgb(118, 204, 204);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.text-box {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-section {
+  width: 100vw;
+  height: 45vh;
+  background-color: rgba(211, 169, 63, 0.712);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-section {
+  width: 100vw;
+  height: 10vh;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-section {
+  display: flex;
+  gap: 3vw;
+}
+
+.changes-section {
+  width: 100vw;
+  height: 45vh;
+  background-color: rgba(88, 160, 160, 0.548);
 }

@@ -8,30 +8,35 @@
     <title>Budget Controller</title>
   </head>
   <body>
-    <div class="text-box">
-      <h2>Current budget:</h2>
-      <h1>0</h1>
-    </div>
-    <div class="choose-section">
-      <select>
-        <option>+</option>
-        <option>-</option>
-      </select>
-      <input type="text" placeholder="Title" />
-      <input type="number" placeholder="Amount" />
-      <button>Add</button>
-    </div>
-    <div class="result-box">
-      <div class="total-income"></div>
-      <div class="total-expenses"></div>
-    </div>
-    <div class="lists-box">
-      <div class="income-box">
-        <div class="income-list"></div>
+    <section class="result-section">
+      <div class="result-box">
+        <h1>Current budget:</h1>
+        <span class="budget">0</span>
+        <h2>Date</h2>
+        <div class="percent-box">
+          <div class="total-income"></div>
+          <div class="total-expenses"></div>
+        </div>
       </div>
-      <div class="expenses-box">
-        <div class="expenses-list"></div>
+    </section>
+    <section class="input-section">
+      <div class="choose-section">
+        <select>
+          <option>+</option>
+          <option>-</option>
+        </select>
+        <input type="text" placeholder="Title" />
+        <input type="number" placeholder="Amount" />
+        <button>Add</button>
+      </div>        
+    </section>
+    <section class="changes-section">
+      <div class="lists-box">
+        <div class="income-box"></div>
+        <div class="expenses-box"></div>
       </div>
-    </div>
+    </section>
   </body>
-</html>
+  </html>
+  
+  
