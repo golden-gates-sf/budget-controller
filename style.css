@@ -6,6 +6,7 @@
 
 html {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 16px;
 }
 
 body {
@@ -27,6 +28,46 @@ body {
   flex-direction: column;
 }
 
+input {
+  height: 7vh;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  border: 1px solid rgb(110, 105, 105);
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border: 2px solid rgb(110, 105, 105);
+}
+
+input[type="text"] {
+  width: 25vw;
+}
+
+input[type="number"] {
+  width: 9vw;
+}
+
+select {
+  width: 4vw;
+  padding: 0.8rem;
+  border: 1px solid rgb(110, 105, 105);
+  border-radius: 8px;
+  outline: none;
+}
+
+select:focus {
+  border: 2px solid rgb(110, 105, 105);
+}
+
+button {
+  width: 4vw;
+  height: 5vh;
+  border: 1px solid rgb(110, 105, 105);
+  border-radius: 8px;
+}
+
 .input-section {
   width: 100vw;
   height: 10vh;
@@ -38,7 +79,8 @@ body {
 
 .choose-section {
   display: flex;
-  gap: 3vw;
+  gap: 1.6vw;
+  align-items: center;
 }
 
 .changes-section {
