@@ -1,0 +1,1 @@
+var sum = document.getElementsByClassName('budget');
