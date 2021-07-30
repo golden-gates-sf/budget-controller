@@ -21,13 +21,13 @@
     </section>
     <section class="input-section">
       <div class="choose-section">
-        <select>
+        <select  id="inc-exp-symbol">
           <option>+</option>
           <option>-</option>
         </select>
-        <input type="text" placeholder="Title" />
-        <input type="number" min="0" placeholder="Amount" />
-        <button>Add</button>
+        <input id="title-value" type="text" placeholder="Title" />
+        <input id="amount-value" type="number" min="0" placeholder="Amount" />
+        <button onclick="getValues()">Add</button>
       </div>
     </section>
     <section class="changes-section">
