@@ -12,5 +12,7 @@ function addRecord() {
     if (record.title && record.amount) {
         record.symbol === "+" ? incList.push(record) : expList.push(record);
     }
-    // console.log(incList, ",", expList);
+    console.log(incList, ",", expList);
 }
+var addButton = document.getElementById("sadButton");
+addButton.addEventListener("click", addRecord);

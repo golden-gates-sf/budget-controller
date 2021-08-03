@@ -28,5 +28,8 @@ function addRecord(): void {
     record.symbol === "+" ? incList.push(record) : expList.push(record);
   }
 
-  // console.log(incList, ",", expList);
+  console.log(incList, ",", expList);
 }
+
+const addButton = document.getElementById("sadButton");
+addButton.addEventListener("click", addRecord);
