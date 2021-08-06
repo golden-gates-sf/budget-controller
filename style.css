@@ -119,4 +119,50 @@ button {
   width: 100vw;
   height: 45vh;
   background-color: rgba(88, 160, 160, 0.548);
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
 }
+
+.lists-box {
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-box {
+  
+  width: 42vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.inc-header {
+  flex: 1;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: rgb(104, 182, 16);
+  border-bottom: 0.1rem solid;
+}
+
+.exp-header {
+  flex: 1;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  color: rgb(194, 98, 53);
+  border-bottom: 0.1rem solid;
+}
+
+.records-box {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+}
+
+.record {
+  height: 7vh;
+  border-bottom: 0.1rem solid rgba(148, 147, 147, 0.849);
+}
+
+
