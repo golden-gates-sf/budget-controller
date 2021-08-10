@@ -7,6 +7,8 @@ interface IRecord {
 let incList: IRecord[] = [];
 let expList: IRecord[] = [];
 
+let sum: number = 0;
+
 function createRecord(): IRecord {
   const tempRecord = <IRecord>{};
   tempRecord.symbol = (<HTMLSelectElement>(
@@ -22,14 +24,21 @@ function createRecord(): IRecord {
   return tempRecord;
 }
 
-function addRecord(): void {
-  const record: IRecord = createRecord();
-  if (record.title && record.amount) {
-    record.symbol === "+" ? incList.push(record) : expList.push(record);
-  }
-
-  console.log(incList, ",", expList);
+function countBudget(symbol: string, amount: number): Number {
+  symbol === "+" ? (sum += amount) : (sum -= amount);
+  return sum;
 }
 
-const addButton = document.getElementById("sadButton");
+function addRecord(): void {
+  const record: IRecord = createRecord();
+  if (record.title && record.amount > 0) {
+    record.symbol === "+" ? incList.push(record) : expList.push(record);
+    countBudget(record.symbol, record.amount);
+  }
+
+  // console.log(sum);
+  // console.log(incList, ",", expList);
+}
+
+const addButton: HTMLElement = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);

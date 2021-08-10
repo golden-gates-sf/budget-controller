@@ -39,6 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
 }
 
 .percent-box {
@@ -102,7 +103,7 @@ button {
 
 .input-section {
   width: 100vw;
-  height: 10vh;
+  height: 9vh;
   background-color: bisque;
   display: flex;
   align-items: center;
@@ -117,7 +118,7 @@ button {
 
 .changes-section {
   width: 100vw;
-  height: 45vh;
+  height: 43vh;
   background-color: rgba(88, 160, 160, 0.548);
   display: flex;
   justify-content: center;
