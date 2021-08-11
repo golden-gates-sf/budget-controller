@@ -8,14 +8,24 @@
     <title>Budget Controller</title>
   </head>
   <body>
-    <section class="result-section"> 
+    <section class="result-section">
       <div class="result-box">
         <h1>Current budget:</h1>
         <span class="budget">0</span>
         <h2>Date</h2>
         <div class="percent-box">
-          <div class="total-income"></div>
-          <div class="total-expenses"></div>
+          <div class="total-income">
+            <span class="total-percent-header">total income</span>
+            <span class="inc-exp-sum">+ 0.00</span>
+            <div class="inc-percent-amount"></div>
+          </div>
+          <div class="total-expenses">
+            <span class="total-percent-header">total expense</span>
+            <span class="inc-exp-sum">- 0.00</span>
+            <div class="exp-percent-amount">
+              <span class="percent">0%</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -26,7 +36,7 @@
           <option>-</option>
         </select>
         <input id="title-value" type="text" placeholder="Title" />
-        <input id="amount-value" type="number" min="0" placeholder="Amount"/>
+        <input id="amount-value" type="number" min="0" placeholder="Amount" />
         <button id="sadButton">Add</button>
       </div>
     </section>

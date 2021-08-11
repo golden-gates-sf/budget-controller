@@ -54,11 +54,59 @@ body {
 .total-income {
   height: 7vh;
   background-color: rgba(146, 216, 65, 0.644);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0 1rem;
 }
 
 .total-expenses {
   height: 7vh;
   background-color: rgba(224, 130, 86, 0.877);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.total-percent-header {
+  flex: 3;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.inc-exp-sum {
+  flex: 4;
+  text-align: right;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: rgb(248, 223, 223);
+}
+
+.inc-percent-amount {
+  flex: 1;
+  height: 2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-percent-amount {
+  flex: 1;
+  background-color: rgba(233, 162, 129, 0.918);
+  height: 1.8rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.percent {
+  font-size: 0.9rem;
+  color: rgb(248, 223, 223);
+  margin: 0.3rem;
 }
 
 input {
@@ -132,7 +180,6 @@ button {
 }
 
 .list-box {
-  
   width: 42vw;
   text-align: center;
   display: flex;
