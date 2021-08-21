@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <title>Budget Controller</title>
   </head>
   <body>
     <section class="result-section">
       <div class="result-box">
-        <h1>Current budget:</h1>
+        <h1>Current Budget:</h1>
         <span class="budget">0</span>
         <h2>Date</h2>
         <div class="percent-box">
@@ -44,23 +45,21 @@
       <div class="lists-box">
         <div class="list-box">
           <span class="inc-header">Income</span>
-          <div class="records-box">
+          <div class="records-box" id="inc-list">
             <div class="record">
               <div class="record-data-box">
                 <span class="record-title">Title</span>
                 <span class="record-amount">+ 0.00</span>
               </div>
               <div class="del-box">
-                <button class="del-button">del</button>
+                <button class="del-button">&#10005;</button>
               </div>
             </div>
-            <div class="record"></div>
           </div>
         </div>
         <div class="list-box">
           <span class="exp-header">Expense</span>
-          <div class="records-box">
-            <div class="record"></div>
+          <div class="records-box" id="exp-list">
           </div>
         </div>
       </div>

@@ -8,15 +8,24 @@ function createRecord() {
     tempRecord.amount = parseFloat(document.getElementById("amount-value").value);
     return tempRecord;
 }
-function countBudget(symbol, amount) {
-    symbol === "+" ? (sum += amount) : (sum -= amount);
-    return sum;
+function addToList(list, title, symbol, amount) {
+    var elem = document.getElementById(list);
+    elem.insertAdjacentHTML("beforeend", "\n      <div class=\"record\">\n      <div class=\"record-data-box\">\n      <span class=\"record-title\">" + title + "</span>\n      <span class=\"record-amount\">" + symbol + " " + amount.toFixed(2) + "</span>\n      </div>\n      <div class=\"del-box\">\n      <button class=\"del-button\">&#10005;</button>\n      </div>\n      </div>\n  ");
 }
 function addRecord() {
     var record = createRecord();
     if (record.title && record.amount > 0) {
-        record.symbol === "+" ? incList.push(record) : expList.push(record);
-        countBudget(record.symbol, record.amount);
+        record.amount = parseFloat(record.amount.toFixed(2));
+        if (record.symbol === "+") {
+            incList.push(record);
+            addToList("inc-list", record.title, record.symbol, record.amount);
+            sum += record.amount;
+        }
+        else {
+            expList.push(record);
+            addToList("exp-list", record.title, record.symbol, record.amount);
+            sum -= record.amount;
+        }
     }
     // console.log(sum);
     // console.log(incList, ",", expList);

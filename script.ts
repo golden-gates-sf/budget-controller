@@ -24,21 +24,39 @@ function createRecord(): IRecord {
   return tempRecord;
 }
 
-function countBudget(symbol: string, amount: number): Number {
-  symbol === "+" ? (sum += amount) : (sum -= amount);
-  return sum;
+function addToList(list, title, symbol, amount): void {
+  const elem = document.getElementById(list);
+  elem.insertAdjacentHTML("beforeend", `
+      <div class="record">
+      <div class="record-data-box">
+      <span class="record-title">${title}</span>
+      <span class="record-amount">${symbol} ${amount.toFixed(2)}</span>
+      </div>
+      <div class="del-box">
+      <button class="del-button">&#10005;</button>
+      </div>
+      </div>
+  `);
 }
 
 function addRecord(): void {
-  const record: IRecord = createRecord();
+  const record = createRecord();
   if (record.title && record.amount > 0) {
-    record.symbol === "+" ? incList.push(record) : expList.push(record);
-    countBudget(record.symbol, record.amount);
+    record.amount = parseFloat(record.amount.toFixed(2));
+    if (record.symbol === "+") {
+      incList.push(record);
+      addToList("inc-list", record.title, record.symbol, record.amount);
+      sum += record.amount;
+    } else {
+      expList.push(record);
+      addToList("exp-list", record.title, record.symbol, record.amount);
+      sum -= record.amount;
+    }
   }
 
   // console.log(sum);
   // console.log(incList, ",", expList);
 }
 
-const addButton: HTMLElement = document.getElementById("sadButton");
+const addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
