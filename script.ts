@@ -26,17 +26,20 @@ function createRecord(): IRecord {
 
 function addToList(list, title, symbol, amount): void {
   const elem = document.getElementById(list);
-  elem.insertAdjacentHTML("beforeend", `
+  elem.insertAdjacentHTML(
+    "afterbegin",
+    `
       <div class="record">
-      <div class="record-data-box">
-      <span class="record-title">${title}</span>
-      <span class="record-amount">${symbol} ${amount.toFixed(2)}</span>
+        <div class="record-data-box">
+          <span class="record-title">${title}</span>
+          <span class="record-amount">${symbol} ${amount.toFixed(2)}</span>
+        </div>
+        <div class="del-box">
+          <button class="del-button">&#10005;</button>
+        </div>
       </div>
-      <div class="del-box">
-      <button class="del-button">&#10005;</button>
-      </div>
-      </div>
-  `);
+  `
+  );
 }
 
 function addRecord(): void {
@@ -52,11 +55,27 @@ function addRecord(): void {
       addToList("exp-list", record.title, record.symbol, record.amount);
       sum -= record.amount;
     }
+
+    if (sum > 0)
+      document.querySelector(".budget").textContent = "+" + sum.toFixed(2)
+    else if (sum === 0) document.querySelector(".budget").textContent = "0"
+    else document.querySelector(".budget").textContent = sum.toFixed(2);
+  
   }
 
-  // console.log(sum);
   // console.log(incList, ",", expList);
 }
 
 const addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
+
+//// FROM HERE
+
+const delButtons = document.querySelectorAll(".del-button");
+window.addEventListener("click", (e) => {
+  const target = e.target as Element
+  if (target.matches(".del-button")) target.parentElement.parentElement.remove();
+  // console.log(target.parentElement.parentElement.classList)
+})
+
+//// TO HERE

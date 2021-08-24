@@ -10,7 +10,7 @@ function createRecord() {
 }
 function addToList(list, title, symbol, amount) {
     var elem = document.getElementById(list);
-    elem.insertAdjacentHTML("beforeend", "\n      <div class=\"record\">\n      <div class=\"record-data-box\">\n      <span class=\"record-title\">" + title + "</span>\n      <span class=\"record-amount\">" + symbol + " " + amount.toFixed(2) + "</span>\n      </div>\n      <div class=\"del-box\">\n      <button class=\"del-button\">&#10005;</button>\n      </div>\n      </div>\n  ");
+    elem.insertAdjacentHTML("afterbegin", "\n      <div class=\"record\">\n        <div class=\"record-data-box\">\n          <span class=\"record-title\">" + title + "</span>\n          <span class=\"record-amount\">" + symbol + " " + amount.toFixed(2) + "</span>\n        </div>\n        <div class=\"del-box\">\n          <button class=\"del-button\">&#10005;</button>\n        </div>\n      </div>\n  ");
 }
 function addRecord() {
     var record = createRecord();
@@ -26,9 +26,23 @@ function addRecord() {
             addToList("exp-list", record.title, record.symbol, record.amount);
             sum -= record.amount;
         }
+        if (sum > 0)
+            document.querySelector(".budget").textContent = "+" + sum.toFixed(2);
+        else if (sum === 0)
+            document.querySelector(".budget").textContent = "0";
+        else
+            document.querySelector(".budget").textContent = sum.toFixed(2);
     }
-    // console.log(sum);
     // console.log(incList, ",", expList);
 }
 var addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
+//// FROM HERE
+var delButtons = document.querySelectorAll(".del-button");
+window.addEventListener("click", function (e) {
+    var target = e.target;
+    if (target.matches(".del-button"))
+        target.parentElement.parentElement.remove();
+    // console.log(target.parentElement.parentElement.classList)
+});
+//// TO HERE
