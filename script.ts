@@ -61,8 +61,9 @@ function addRecord(): void {
     else if (sum === 0) document.querySelector(".budget").textContent = "0"
     else document.querySelector(".budget").textContent = sum.toFixed(2);
   
+    document.querySelectorAll('input').forEach(el => el.value = '');
   }
-
+  
   // console.log(incList, ",", expList);
 }
 
@@ -71,9 +72,8 @@ addButton.addEventListener("click", addRecord);
 
 //// FROM HERE
 
-const delButtons = document.querySelectorAll(".del-button");
 window.addEventListener("click", (e) => {
-  const target = e.target as Element
+  const target = e.target as Element;
   if (target.matches(".del-button")) target.parentElement.parentElement.remove();
   // console.log(target.parentElement.parentElement.classList)
 })

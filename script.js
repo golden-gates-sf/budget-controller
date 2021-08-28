@@ -32,13 +32,13 @@ function addRecord() {
             document.querySelector(".budget").textContent = "0";
         else
             document.querySelector(".budget").textContent = sum.toFixed(2);
+        document.querySelectorAll('input').forEach(function (el) { return el.value = ''; });
     }
     // console.log(incList, ",", expList);
 }
 var addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
 //// FROM HERE
-var delButtons = document.querySelectorAll(".del-button");
 window.addEventListener("click", function (e) {
     var target = e.target;
     if (target.matches(".del-button"))

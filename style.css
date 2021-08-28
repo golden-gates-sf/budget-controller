@@ -5,9 +5,8 @@
 }
 
 html {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
-  
 }
 
 h1 {
@@ -172,7 +171,7 @@ button {
 }
 
 .changes-section {
-  height: 43vh;
+  min-height: 43vh; /* width when extends */
   background-color: rgba(88, 160, 160, 0.548);
   display: flex;
   justify-content: center;
@@ -193,7 +192,6 @@ button {
 }
 
 .inc-header {
-  flex: 1;
   font-size: 1.6rem;
   text-transform: uppercase;
   color: rgb(104, 182, 16);
@@ -201,7 +199,6 @@ button {
 }
 
 .exp-header {
-  flex: 1;
   font-size: 1.6rem;
   text-transform: uppercase;
   color: rgb(194, 98, 53);
