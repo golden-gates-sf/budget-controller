@@ -8,6 +8,8 @@ let incList: IRecord[] = [];
 let expList: IRecord[] = [];
 
 let sum: number = 0;
+let totalInc: number = 0;
+let totalExp: number = 0;
 
 function createRecord(): IRecord {
   const tempRecord = <IRecord>{};
@@ -42,6 +44,16 @@ function addToList(list, title, symbol, amount): void {
   );
 }
 
+function updateData(): void {
+  if (sum > 0)
+    document.querySelector(".budget").textContent = "+" + sum.toFixed(2);
+  else if (sum === 0) document.querySelector(".budget").textContent = "0";
+  else document.querySelector(".budget").textContent = sum.toFixed(2);
+
+  document.getElementById("inc-sum").textContent = "+ " + totalInc.toFixed(2);
+  document.getElementById("exp-sum").textContent = "- " + totalExp.toFixed(2);
+}
+
 function addRecord(): void {
   const record = createRecord();
   if (record.title && record.amount > 0) {
@@ -50,21 +62,19 @@ function addRecord(): void {
       incList.push(record);
       addToList("inc-list", record.title, record.symbol, record.amount);
       sum += record.amount;
+      totalInc += record.amount;
     } else {
       expList.push(record);
       addToList("exp-list", record.title, record.symbol, record.amount);
       sum -= record.amount;
+      totalExp += record.amount;
     }
 
-    if (sum > 0)
-      document.querySelector(".budget").textContent = "+" + sum.toFixed(2)
-    else if (sum === 0) document.querySelector(".budget").textContent = "0"
-    else document.querySelector(".budget").textContent = sum.toFixed(2);
-  
-    document.querySelectorAll('input').forEach(el => el.value = '');
+    updateData();
+
+    // document.querySelectorAll('input').forEach(el => el.value = '');
   }
-  
-  // console.log(incList, ",", expList);
+
 }
 
 const addButton = document.getElementById("sadButton");
@@ -72,10 +82,19 @@ addButton.addEventListener("click", addRecord);
 
 //// FROM HERE
 
-window.addEventListener("click", (e) => {
-  const target = e.target as Element;
-  if (target.matches(".del-button")) target.parentElement.parentElement.remove();
-  // console.log(target.parentElement.parentElement.classList)
-})
+const recordBoxes = document.querySelectorAll(".records-box");
+recordBoxes.forEach((recordBox) =>
+  recordBox.addEventListener("click", (e) => {
+    const target = e.target as Element;
+    if (target.matches(".del-button")) {
+      const record = target.parentElement.parentElement;
+      record.remove();
+      // console.log(target.parentElement.parentElement.classList)    
+      incList.forEach(el => {
+
+      })
+    }
+  })
+);
 
 //// TO HERE
