@@ -3,6 +3,7 @@ var expList = [];
 var sum = 0;
 var totalInc = 0;
 var totalExp = 0;
+var i = 0;
 function createRecord() {
     var tempRecord = {};
     tempRecord.symbol = (document.getElementById("inc-exp-symbol")).value;
@@ -12,7 +13,7 @@ function createRecord() {
 }
 function addToList(list, title, symbol, amount) {
     var elem = document.getElementById(list);
-    elem.insertAdjacentHTML("afterbegin", "\n      <div class=\"record\">\n        <div class=\"record-data-box\">\n          <span class=\"record-title\">" + title + "</span>\n          <span class=\"record-amount\">" + symbol + " " + amount.toFixed(2) + "</span>\n        </div>\n        <div class=\"del-box\">\n          <button class=\"del-button\">&#10005;</button>\n        </div>\n      </div>\n  ");
+    elem.insertAdjacentHTML("afterbegin", "\n      <div class=\"record\" id=\"" + i + "\">\n        <div class=\"record-data-box\">\n          <span class=\"record-title\">" + title + "</span>\n          <span class=\"record-amount\">" + symbol + " " + amount.toFixed(2) + "</span>\n        </div>\n        <div class=\"del-box\">\n          <button class=\"del-button\">&#10005;</button>\n        </div>\n      </div>\n  ");
 }
 function updateData() {
     if (sum > 0)
@@ -27,6 +28,8 @@ function updateData() {
 function addRecord() {
     var record = createRecord();
     if (record.title && record.amount > 0) {
+        i += 1;
+        record.id = i;
         record.amount = parseFloat(record.amount.toFixed(2));
         if (record.symbol === "+") {
             incList.push(record);
@@ -46,17 +49,33 @@ function addRecord() {
 }
 var addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
+console.log(incList, expList);
 //// FROM HERE
 var recordBoxes = document.querySelectorAll(".records-box");
 recordBoxes.forEach(function (recordBox) {
     return recordBox.addEventListener("click", function (e) {
         var target = e.target;
         if (target.matches(".del-button")) {
-            var record = target.parentElement.parentElement;
-            record.remove();
-            // console.log(target.parentElement.parentElement.classList)    
-            incList.forEach(function (el) {
+            var record_1 = target.parentElement.parentElement;
+            incList.forEach(function (el, i) {
+                if (el.id === parseInt(record_1.id)) {
+                    sum -= el.amount;
+                    totalInc -= el.amount;
+                    incList.splice(i, 1);
+                    updateData();
+                }
             });
+            expList.forEach(function (el, i) {
+                if (el.id === parseInt(record_1.id)) {
+                    sum += el.amount;
+                    totalExp -= el.amount;
+                    expList.splice(i, 1);
+                    updateData();
+                }
+            });
+            record_1.remove();
+            // console.log(target.parentElement.parentElement.classList)    
+            console.log(incList, expList);
         }
     });
 });

@@ -1,4 +1,5 @@
 interface IRecord {
+  id: number;
   symbol: string;
   title: string;
   amount: number;
@@ -10,6 +11,8 @@ let expList: IRecord[] = [];
 let sum: number = 0;
 let totalInc: number = 0;
 let totalExp: number = 0;
+
+let i: number = 0
 
 function createRecord(): IRecord {
   const tempRecord = <IRecord>{};
@@ -31,7 +34,7 @@ function addToList(list, title, symbol, amount): void {
   elem.insertAdjacentHTML(
     "afterbegin",
     `
-      <div class="record">
+      <div class="record" id="${i}">
         <div class="record-data-box">
           <span class="record-title">${title}</span>
           <span class="record-amount">${symbol} ${amount.toFixed(2)}</span>
@@ -57,6 +60,8 @@ function updateData(): void {
 function addRecord(): void {
   const record = createRecord();
   if (record.title && record.amount > 0) {
+    i += 1;
+    record.id = i; 
     record.amount = parseFloat(record.amount.toFixed(2));
     if (record.symbol === "+") {
       incList.push(record);
@@ -71,7 +76,6 @@ function addRecord(): void {
     }
 
     updateData();
-
     // document.querySelectorAll('input').forEach(el => el.value = '');
   }
 
@@ -79,6 +83,7 @@ function addRecord(): void {
 
 const addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
+console.log(incList, expList);
 
 //// FROM HERE
 
@@ -88,11 +93,25 @@ recordBoxes.forEach((recordBox) =>
     const target = e.target as Element;
     if (target.matches(".del-button")) {
       const record = target.parentElement.parentElement;
+      incList.forEach((el, i) => {
+        if (el.id === parseInt(record.id)) {
+          sum -= el.amount;
+          totalInc -= el.amount;
+          incList.splice(i, 1);
+          updateData();
+        } 
+      });
+      expList.forEach((el, i) => {
+        if (el.id === parseInt(record.id)) {
+          sum += el.amount;
+          totalExp -= el.amount;
+          expList.splice(i, 1);
+          updateData();
+        } 
+      });
       record.remove();
       // console.log(target.parentElement.parentElement.classList)    
-      incList.forEach(el => {
-
-      })
+      console.log(incList, expList);  
     }
   })
 );

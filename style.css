@@ -30,7 +30,6 @@ body {
 }
 
 .result-section {
-  width: 100vw;
   height: 48vh;
   background-color: rgba(211, 169, 63, 0.712);
   display: flex;
@@ -156,7 +155,6 @@ button {
 }
 
 .input-section {
-  width: 100vw;
   height: 9vh;
   background-color: bisque;
   display: flex;
@@ -171,7 +169,7 @@ button {
 }
 
 .changes-section {
-  min-height: 43vh; /* width when extends */
+  min-height: 43vh;
   background-color: rgba(88, 160, 160, 0.548);
   display: flex;
   justify-content: center;
