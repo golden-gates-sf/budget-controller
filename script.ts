@@ -55,6 +55,8 @@ function updateData(): void {
 
   document.getElementById("inc-sum").textContent = "+ " + totalInc.toFixed(2);
   document.getElementById("exp-sum").textContent = "- " + totalExp.toFixed(2);
+
+  if (totalInc !== 0) document.querySelector(".percent").textContent = String(Math.round(totalExp * 100 / totalInc)) + "%";
 }
 
 function addRecord(): void {
@@ -76,7 +78,7 @@ function addRecord(): void {
     }
 
     updateData();
-    // document.querySelectorAll('input').forEach(el => el.value = '');
+    document.querySelectorAll('input').forEach(el => el.value = '');
   }
 
 }
@@ -98,7 +100,6 @@ recordBoxes.forEach((recordBox) =>
           sum -= el.amount;
           totalInc -= el.amount;
           incList.splice(i, 1);
-          updateData();
         } 
       });
       expList.forEach((el, i) => {
@@ -106,9 +107,9 @@ recordBoxes.forEach((recordBox) =>
           sum += el.amount;
           totalExp -= el.amount;
           expList.splice(i, 1);
-          updateData();
         } 
       });
+      updateData();
       record.remove();
       // console.log(target.parentElement.parentElement.classList)    
       console.log(incList, expList);  

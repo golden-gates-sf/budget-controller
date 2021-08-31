@@ -24,6 +24,8 @@ function updateData() {
         document.querySelector(".budget").textContent = sum.toFixed(2);
     document.getElementById("inc-sum").textContent = "+ " + totalInc.toFixed(2);
     document.getElementById("exp-sum").textContent = "- " + totalExp.toFixed(2);
+    if (totalInc !== 0)
+        document.querySelector(".percent").textContent = String(Math.round(totalExp * 100 / totalInc)) + "%";
 }
 function addRecord() {
     var record = createRecord();
@@ -44,7 +46,7 @@ function addRecord() {
             totalExp += record.amount;
         }
         updateData();
-        // document.querySelectorAll('input').forEach(el => el.value = '');
+        document.querySelectorAll('input').forEach(function (el) { return el.value = ''; });
     }
 }
 var addButton = document.getElementById("sadButton");
@@ -62,7 +64,6 @@ recordBoxes.forEach(function (recordBox) {
                     sum -= el.amount;
                     totalInc -= el.amount;
                     incList.splice(i, 1);
-                    updateData();
                 }
             });
             expList.forEach(function (el, i) {
@@ -70,9 +71,9 @@ recordBoxes.forEach(function (recordBox) {
                     sum += el.amount;
                     totalExp -= el.amount;
                     expList.splice(i, 1);
-                    updateData();
                 }
             });
+            updateData();
             record_1.remove();
             // console.log(target.parentElement.parentElement.classList)    
             console.log(incList, expList);
