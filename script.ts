@@ -12,7 +12,7 @@ let sum: number = 0;
 let totalInc: number = 0;
 let totalExp: number = 0;
 
-let i: number = 0
+let i: number = 0;
 
 function createRecord(): IRecord {
   const tempRecord = <IRecord>{};
@@ -29,7 +29,7 @@ function createRecord(): IRecord {
   return tempRecord;
 }
 
-function addToList(list, title, symbol, amount): void {
+function addToList(list, {title, symbol, amount}): void {
   const elem = document.getElementById(list);
   elem.insertAdjacentHTML(
     "afterbegin",
@@ -56,36 +56,48 @@ function updateData(): void {
   document.getElementById("inc-sum").textContent = "+ " + totalInc.toFixed(2);
   document.getElementById("exp-sum").textContent = "- " + totalExp.toFixed(2);
 
-  if (totalInc !== 0) document.querySelector(".percent").textContent = String(Math.round(totalExp * 100 / totalInc)) + "%";
+  if (totalInc !== 0)
+    document.querySelector(".percent").textContent =
+      String(Math.round((totalExp * 100) / totalInc)) + "%";
 }
 
 function addRecord(): void {
   const record = createRecord();
   if (record.title && record.amount > 0) {
     i += 1;
-    record.id = i; 
+    record.id = i;
     record.amount = parseFloat(record.amount.toFixed(2));
     if (record.symbol === "+") {
       incList.push(record);
-      addToList("inc-list", record.title, record.symbol, record.amount);
+      addToList("inc-list", record);
       sum += record.amount;
       totalInc += record.amount;
     } else {
       expList.push(record);
-      addToList("exp-list", record.title, record.symbol, record.amount);
+      addToList("exp-list", record);
       sum -= record.amount;
       totalExp += record.amount;
     }
 
     updateData();
-    document.querySelectorAll('input').forEach(el => el.value = '');
+    document.querySelectorAll("input").forEach((el) => (el.value = ""));
   }
-
 }
+
+function printDate(): string {
+  const date = new Date();
+
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  return day + '.' + month + '.' + year;
+}
+
+document.getElementById("date").textContent = printDate();
 
 const addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
-console.log(incList, expList);
 
 //// FROM HERE
 
@@ -100,21 +112,21 @@ recordBoxes.forEach((recordBox) =>
           sum -= el.amount;
           totalInc -= el.amount;
           incList.splice(i, 1);
-        } 
+        }
       });
       expList.forEach((el, i) => {
         if (el.id === parseInt(record.id)) {
           sum += el.amount;
           totalExp -= el.amount;
           expList.splice(i, 1);
-        } 
+        }
       });
       updateData();
       record.remove();
-      // console.log(target.parentElement.parentElement.classList)    
-      console.log(incList, expList);  
+      // console.log(target.parentElement.parentElement.classList)
     }
   })
 );
 
 //// TO HERE
+

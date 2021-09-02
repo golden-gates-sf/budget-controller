@@ -11,7 +11,8 @@ function createRecord() {
     tempRecord.amount = parseFloat(document.getElementById("amount-value").value);
     return tempRecord;
 }
-function addToList(list, title, symbol, amount) {
+function addToList(list, _a) {
+    var title = _a.title, symbol = _a.symbol, amount = _a.amount;
     var elem = document.getElementById(list);
     elem.insertAdjacentHTML("afterbegin", "\n      <div class=\"record\" id=\"" + i + "\">\n        <div class=\"record-data-box\">\n          <span class=\"record-title\">" + title + "</span>\n          <span class=\"record-amount\">" + symbol + " " + amount.toFixed(2) + "</span>\n        </div>\n        <div class=\"del-box\">\n          <button class=\"del-button\">&#10005;</button>\n        </div>\n      </div>\n  ");
 }
@@ -25,7 +26,8 @@ function updateData() {
     document.getElementById("inc-sum").textContent = "+ " + totalInc.toFixed(2);
     document.getElementById("exp-sum").textContent = "- " + totalExp.toFixed(2);
     if (totalInc !== 0)
-        document.querySelector(".percent").textContent = String(Math.round(totalExp * 100 / totalInc)) + "%";
+        document.querySelector(".percent").textContent =
+            String(Math.round((totalExp * 100) / totalInc)) + "%";
 }
 function addRecord() {
     var record = createRecord();
@@ -35,23 +37,30 @@ function addRecord() {
         record.amount = parseFloat(record.amount.toFixed(2));
         if (record.symbol === "+") {
             incList.push(record);
-            addToList("inc-list", record.title, record.symbol, record.amount);
+            addToList("inc-list", record);
             sum += record.amount;
             totalInc += record.amount;
         }
         else {
             expList.push(record);
-            addToList("exp-list", record.title, record.symbol, record.amount);
+            addToList("exp-list", record);
             sum -= record.amount;
             totalExp += record.amount;
         }
         updateData();
-        document.querySelectorAll('input').forEach(function (el) { return el.value = ''; });
+        document.querySelectorAll("input").forEach(function (el) { return (el.value = ""); });
     }
 }
+function printDate() {
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    return day + '.' + month + '.' + year;
+}
+document.getElementById("date").textContent = printDate();
 var addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
-console.log(incList, expList);
 //// FROM HERE
 var recordBoxes = document.querySelectorAll(".records-box");
 recordBoxes.forEach(function (recordBox) {
@@ -75,8 +84,7 @@ recordBoxes.forEach(function (recordBox) {
             });
             updateData();
             record_1.remove();
-            // console.log(target.parentElement.parentElement.classList)    
-            console.log(incList, expList);
+            // console.log(target.parentElement.parentElement.classList)
         }
     });
 });
