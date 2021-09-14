@@ -47,6 +47,7 @@ function addRecord() {
             sum -= record.amount;
             totalExp += record.amount;
         }
+        // localStorage.setItem(`${i}`, JSON.stringify(record));
         updateData();
         document.querySelectorAll("input").forEach(function (el) { return (el.value = ""); });
     }
@@ -56,9 +57,11 @@ function printDate() {
     var day = date.getDate();
     var month = date.getMonth() + 1;
     var year = date.getFullYear();
-    return day + '.' + month + '.' + year;
+    return day + "." + month + "." + year;
 }
 document.getElementById("date").textContent = printDate();
+// Getting records from localStorage
+//
 var addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
 //// FROM HERE
@@ -89,3 +92,6 @@ recordBoxes.forEach(function (recordBox) {
     });
 });
 //// TO HERE
+// const randomItem = localStorage.getItem('key')
+// if (randomItem) console.log('Hi user --> ', randomItem)
+// localStorage.setItem('key', 'Alucardo-')

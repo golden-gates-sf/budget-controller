@@ -29,7 +29,7 @@ function createRecord(): IRecord {
   return tempRecord;
 }
 
-function addToList(list, {title, symbol, amount}): void {
+function addToList(list, { title, symbol, amount }): void {
   const elem = document.getElementById(list);
   elem.insertAdjacentHTML(
     "afterbegin",
@@ -78,7 +78,7 @@ function addRecord(): void {
       sum -= record.amount;
       totalExp += record.amount;
     }
-
+    // localStorage.setItem(`${i}`, JSON.stringify(record));
     updateData();
     document.querySelectorAll("input").forEach((el) => (el.value = ""));
   }
@@ -91,10 +91,14 @@ function printDate(): string {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  return day + '.' + month + '.' + year;
+  return day + "." + month + "." + year;
 }
 
 document.getElementById("date").textContent = printDate();
+
+// Getting records from localStorage
+
+//
 
 const addButton = document.getElementById("sadButton");
 addButton.addEventListener("click", addRecord);
@@ -130,3 +134,8 @@ recordBoxes.forEach((recordBox) =>
 
 //// TO HERE
 
+// const randomItem = localStorage.getItem('key')
+
+// if (randomItem) console.log('Hi user --> ', randomItem)
+
+// localStorage.setItem('key', 'Alucardo-')

@@ -31,6 +31,12 @@ body {
 }
 
 .result-section {
+  /* background-image: linear-gradient(#000000a6, #000000a6), url(img/hero.jpg);
+    background-size: cover;
+    background-position: center;*/
+  background-image: linear-gradient(#9e969641, #9e969641), url(./img/mountains-grids-polygon-4k-a9.jpg);
+  background-size: cover;
+  background-position: center;
   height: 48vh;
   background-color: rgba(211, 169, 63, 0.712);
   display: flex;
@@ -56,7 +62,7 @@ body {
 
 .total-income {
   height: 7vh;
-  background-color: rgba(146, 216, 65, 0.644);
+  background-color: rgba(146, 216, 65, 0.788);
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -65,7 +71,7 @@ body {
 
 .total-expenses {
   height: 7vh;
-  background-color: rgba(224, 130, 86, 0.877);
+  background-color: rgba(224, 130, 86, 0.788);
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -157,7 +163,7 @@ button {
 
 .input-section {
   height: 9vh;
-  background-color: bisque;
+  background-color: #EF93A8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,7 +177,7 @@ button {
 
 .changes-section {
   min-height: 43vh;
-  background-color: rgba(88, 160, 160, 0.548);
+  background-color: #ef93a883;
   display: flex;
   justify-content: center;
   padding: 1.5rem 0;
